@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="Andro Põlluste">
+        <comment>Create country table</comment>
+        <createTable tableName="country" remarks="Table holding available countries">
+            <column name="id" type="identity" remarks="Country id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(100)" remarks="Country name">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="Andro Põlluste">
+        <comment>Create table for system users</comment>
+        <createTable tableName="user">
+            <column name="id" type="identity" remarks="User id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="username" type="varchar(100)" remarks="Login username ot system">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="varchar(100)" remarks="User password encrypted with BCryptPasswordEncoder">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="varchar(100)"  remarks="User role on login">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="Andro Põlluste">
+        <comment>Create client table</comment>
+        <createTable tableName="client" remarks="Table holding clients">
+            <column name="id" type="identity" remarks="Client id">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="user_id" type="bigint" remarks="User id who this client belongs to">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(100)" remarks="First name">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(100)" remarks="Last name">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="varchar(100)" remarks="Username">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(100)" remarks="Email"/>
+            <column name="address" type="varchar(100)" remarks="Country name">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country_id" type="bigint" remarks="Country id of clients country">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

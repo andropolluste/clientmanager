@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="Andro Põlluste">
+        <comment>Add available countries</comment>
+        <insert tableName="country">
+            <column name="name" value="Estonia"/>
+        </insert>
+        <insert tableName="country">
+            <column name="name" value="Latvia"/>
+        </insert>
+        <insert tableName="country">
+            <column name="name" value="Lithuania"/>
+        </insert>
+        <insert tableName="country">
+            <column name="name" value="Finland"/>
+        </insert>
+        <insert tableName="country">
+            <column name="name" value="Sweden"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="2" author="Andro Põlluste">
+        <comment>Add users to database</comment>
+        <insert tableName="user">
+            <column name="username" value="harry"/>
+            <!-- Encoded password "potter" -->
+            <column name="password" value="$2a$10$MLUOAPFs3QBXXP5hngIFJeeen4BM8Krrf7o6OjPU0dLlyRAu.9DbG"/>
+            <column name="role" value="USER"/>
+        </insert>
+        <insert tableName="user">
+            <column name="username" value="hermione"/>
+            <!-- Encoded password "granger" -->
+            <column name="password" value="$2a$10$A5ZnUYalh2VxjJpvfk6cjuLflxGwxJAcpqBJ59nF26xFww2EBYY4q"/>
+            <column name="role" value="USER"/>
+        </insert>
+        <insert tableName="user">
+            <column name="username" value="ronald"/>
+            <!-- Encoded password "password3" -->
+            <column name="password" value="$2a$10$ehcVzehI3y.ZmeworkMPmuq0Fv/Mw0/7fvvB1iUEJ9IeuLT8K1xKC"/>
+            <column name="role" value="USER"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

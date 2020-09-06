@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Client list</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <div class="container">
+        <div th:if="${not #strings.isEmpty(successMessage)}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <div th:text="${successMessage}">Success message</div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="row">
+            <div  class="float-right">
+                Logged in as&nbsp;<span class="font-weight-bold" th:text="${#authentication.name}">username</span>
+                | <a th:href="@{/logout}" class="font-weight-bold">Logout</a>
+            </div>
+        </div>
+        <div class="py-5 text-center">
+            <h2>Clients</h2>
+        </div>
+
+        <div class="row">
+            <div class="row">
+                <a th:href="@{/client/add}" class="btn btn-primary">Add client</a>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Username</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${not #lists.isEmpty(clients)}" th:each="client : ${clients}">
+                    <th scope="row" th:text="${client.id}">Id</th>
+                    <td th:text="${client.firstName}">First Name</td>
+                    <td th:text="${client.lastName}">Last name</td>
+                    <td th:text="${client.username}">Username</td>
+                    <td>
+                        <a th:href="@{/client/edit(id=${client.id})}" class="btn btn-primary">Edit client</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2018 Company Name</p>
+    </footer>
+
+</body>
+</html>
