@@ -18,10 +18,15 @@
 </head>
 
 <body class="bg-light">
-
     <div class="container">
+        <div class="row">
+            <div  class="float-right">
+                Logged in as&nbsp;<span class="font-weight-bold" th:text="${#authentication.name}">username</span>
+                | <a th:href="@{/logout}" class="font-weight-bold">Logout</a>
+            </div>
+        </div>
         <div class="py-5 text-center">
-            <h2>Add Client</h2>
+            <h2 th:text="${client.new ? 'Add client' : 'Update client'}">Add Client</h2>
         </div>
 
         <div class="row">
@@ -86,8 +91,8 @@
                         </div>
                     </div>
                     <hr class="mb-4">
-
-                    <button class="btn btn-primary btn-lg btn-block" type="submit" th:text="${client.new ? 'Add client' : 'Save'}">Add Client</button>
+                    <a th:href="@{/}" class="btn btn-secondary btn-lg">Cancel<a>
+                    <button class="btn btn-primary btn-lg" type="submit" th:text="${client.new ? 'Add client' : 'Save'}">Add Client</button>
                 </form>
             </div>
         </div>
