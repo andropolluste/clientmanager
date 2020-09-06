@@ -1,4 +1,4 @@
-##ClientManager Application
+## ClientManager Application
 
 This application is created based on test assignment described in task folder.
 
